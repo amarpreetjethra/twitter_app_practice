@@ -52052,3 +52052,191 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 7747)
 
 
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-12-04 13:56:44 +0530
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"ZpsrBxtjwQFYEezsx0gWMLtDaYVDXD/nsVRxLSLa5vu0oK5idg9brq7RKzSLLabbWwdqAyjvA4AianLqG82ByA==", "user"=>{"email"=>"amyjethra@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'amyjethra@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 217ms (ActiveRecord: 0.4ms | Allocations: 7162)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-04 13:56:45 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `follows` ON `users`.`id` = `follows`.`followee_id` WHERE `follows`.`follower_id` = 1[0m
+  ↳ app/controllers/tweets_controller.rb:5:in `map'
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.3ms)[0m  [1m[34mSELECT `tweets`.* FROM `tweets` ORDER BY `tweets`.`created_at` ASC[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  Rendered tweets/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 6237)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 15.3ms | ActiveRecord: 1.2ms | Allocations: 18001)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:56:48 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.7ms | Allocations: 857)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1198)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 0.4ms | Allocations: 9193)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2020-12-04 13:56:50 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `follows` ON `users`.`id` = `follows`.`followee_id` WHERE `follows`.`follower_id` = 1[0m
+  ↳ app/controllers/tweets_controller.rb:5:in `map'
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.4ms)[0m  [1m[34mSELECT `tweets`.* FROM `tweets` ORDER BY `tweets`.`created_at` ASC[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  Rendered tweets/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3321)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 15.1ms | ActiveRecord: 2.1ms | Allocations: 12332)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:56:52 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.4ms | Allocations: 501)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 591)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 0.4ms | Allocations: 8459)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:57:11 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 6.4ms | Allocations: 948)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1288)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 26.2ms | ActiveRecord: 0.8ms | Allocations: 10358)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:58:19 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.2ms | Allocations: 816)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1156)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.3ms | Allocations: 10226)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:58:27 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.9ms | Allocations: 816)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.4ms | Allocations: 10224)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:58:38 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.2ms | Allocations: 805)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1146)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 9.7ms | ActiveRecord: 0.4ms | Allocations: 10219)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:59:01 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.8ms | Allocations: 805)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1145)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 15.9ms | ActiveRecord: 0.4ms | Allocations: 10224)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:59:29 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.4ms | Allocations: 814)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1154)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 0.4ms | Allocations: 10200)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 13:59:38 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 1.9ms | Allocations: 813)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1153)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 11.4ms | ActiveRecord: 0.3ms | Allocations: 10219)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2020-12-04 14:00:00 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 5.1ms | Allocations: 812)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1153)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 25.7ms | ActiveRecord: 0.9ms | Allocations: 10201)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-04 14:00:06 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `follows` ON `users`.`id` = `follows`.`followee_id` WHERE `follows`.`follower_id` = 1[0m
+  ↳ app/controllers/tweets_controller.rb:5:in `map'
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.4ms)[0m  [1m[34mSELECT `tweets`.* FROM `tweets` ORDER BY `tweets`.`created_at` ASC[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:13
+  Rendered tweets/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 3650)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 27ms (Views: 18.3ms | ActiveRecord: 2.0ms | Allocations: 12799)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-12-04 14:00:08 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gw/gMpy+ci+t6+Y6TuZkR67+hfOU0+zNbrBXQqe4JK46fQXiadRE8/ezXBVWumejNEgNjzAJaNP4sWKEZdTUBA=="}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 1.0ms | Allocations: 2426)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-04 14:00:08 +0530
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 336)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-04 14:00:08 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 521)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1972)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 9690)
+
+

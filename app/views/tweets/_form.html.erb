@@ -27,11 +27,10 @@
 
   <p>
 
-    <%= form.label :body%>
+    <h5><%= form.label :body%></h5>
 
-    <br>
 
-    <%= form.text_field :body, :id => 'body'  %>
+    <%= form.text_area :body, :id => 'body' , :placeholder=>"Enter your tweet here" %>
 
   </p>
 
