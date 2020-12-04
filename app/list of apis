@@ -1,0 +1,6 @@
+http://localhost:3000/tweets.json?type=latest
+
+http://localhost:3000/tweets.json?type=oldest
+
+
+http://localhost:3000/users/1/profile.json

@@ -1,0 +1,42 @@
+<div class="container">
+  <%= link_to 'Latest Tweet First', tweets_path(type: "latest") %> | <%= link_to 'Oldest Tweet First', tweets_path(type: "oldest") %>
+   <div style="float:right;">
+   <%= link_to 'New Tweet', new_tweet_path(@user), class:"btn btn-primary" %> 
+   <%= link_to 'My profile', user_profile_path(current_user.id), class:"btn btn-primary" %> 
+   </div>
+   <br/> <br/>
+  <%  @all_tweets.each do |tweet| %> 
+
+    <tr>
+       <div class="card" >
+        <div class="card-header">
+          <%= link_to tweet.user.email, user_profile_path(tweet.user) %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> <h5></h5></h5>
+          <p class="card-text">
+         <td><%= tweet.body %></td>
+
+          <td><%= tweet.created_at %></td>
+          <br/><br/>
+          <% if current_user.id == tweet.user_id %>
+
+            <%= link_to "Delete", tweet_path(tweet.id), :confirm => "Are you sure?", :method => :delete, class: "btn btn-primary" %>
+
+          <% end %>
+          </p>
+          
+        </div>
+      </div>
+     
+
+      
+    </tr>
+
+  <% end %>
+
+  
+ 
+</div>
+
+ 

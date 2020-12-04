@@ -1,0 +1,85 @@
+<div class="container">
+
+<h1><%= @userinfo.email %></h1>
+<%= link_to 'Back', tweets_path, class:"btn btn-primary" , style:"float:right;"%>
+
+<h2>You have tweeted <%= @usercount.size %> time(s).</h2>
+
+</div>
+ 
+
+<div class="container">
+
+<section id="all-links">
+    <ul class="navbar navbar-default" style="background-color:#2d604b26;list-style-type:none;">
+    <% if @userinfo.id == current_user.id %>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+    <% elsif current_user.followees.include?(@userinfo) %>
+        <li><h5><%= button_to "Unfollow", unfollow_user_path, method: "POST" %></h5></li>
+    <% else %>
+        <li><h5><%= button_to "Follow", follow_user_path, method: "POST"  %></h5></li>
+    <% end%>
+    <% if @userinfo.id == current_user.id %>
+    
+    <li><p>Followers </p> <%= current_user.followers.size %> <br/>
+    <% current_user.followers.each do |c_u| %>
+     <a href="/users/<%= c_u.id %>/profile"><%= c_u.email  %></a>
+     <br/>
+    <% end %>
+    </li>
+    <li><p>Following </p> <%= current_user.followees.size %> <br/> 
+    <% current_user.followees.each do |c_u| %>
+     <a href="/users/<%= c_u.id %>/profile"><%= c_u.email  %></a> <br/>
+    <% end %>
+    </li>
+    <%else%>
+    <li><p>Followers </p> <%= @userinfo.followers.size %>  <br/> 
+    <% @userinfo.followers.each do |c_u| %>
+     <a href="/users/<%= c_u.id %>/profile"><%= c_u.email  %></a>
+      <br/>
+    <% end %>
+    </li>
+    <li><p>Following </p> <%= @userinfo.followees.size %>  <br/> 
+    <% @userinfo.followees.each do |c_u| %>
+     <a href="/users/<%= c_u.id %>/profile"><%= c_u.email  %></a> <br/>
+    <% end %>
+    </li>
+    <% end %>
+    <br>
+    </ul>
+</section>
+<% @tweets.reverse.each do |tweet| %>
+  <% if @userinfo == tweet.user %>
+
+    <p>
+
+      <tr>
+         <div class="card" >
+        <div class="card-header">
+          <%= link_to tweet.user.email, user_profile_path(tweet.user) %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> <h5></h5></h5>
+          <p class="card-text">
+         <td><%= tweet.body %></td>
+
+          <td><%= tweet.created_at %></td>
+          <br/><br/>
+          <% if @userinfo.id == current_user.id %>
+
+            <%= link_to "Delete", tweet_path(tweet.id), :confirm => "Are you sure?", :method => :delete, class: "btn btn-primary" %>
+
+          <% end %>
+          </p>
+          
+        </div>
+
+      </tr>
+    </p>
+
+  <% end %>
+
+<% end %>
+
+</div>
+
